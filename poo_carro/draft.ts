@@ -45,10 +45,46 @@ class Car{
 
         if((this.gas + gas) >= this.gasMax){
 
-            return
+            this.gas = this.gasMax;
+            return;
         }
 
         this.gas += gas;
+
+    }
+
+    drive(km: number): void {
+
+        if(this.pass == 0){
+            console.log("fail: nao ha ninguem no carro");
+            return;
+
+        }
+
+        if(this.gas == 0){
+
+            console.log("fail: tanque vazio");
+            return;
+
+        } 
+        
+        if(km >= this.gas) {
+
+            console.log(`fail: tanque vazio apos andar ${this.gas} km`);
+            this.km += this.gas;
+            this.gas = 0;
+            
+            return;
+
+        }
+        
+            
+        this.gas -= km;
+        this.km += km;
+
+    
+
+        
 
     }
     
@@ -79,6 +115,7 @@ function main() {
         else if (args[0] === "enter") { car.enter();                    }
         else if (args[0] === "leave") { car.leave();                    }
         else if (args[0] === "fuel")  { car.fuel(+args[1]);             }
+        else if (args[0] === "drive") { car.drive(+args[1]);            }
         else if (args[0] === "end")   { break;                          }
         else                          { write("fail: comando invalido");}
     }
