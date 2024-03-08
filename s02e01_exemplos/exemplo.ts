@@ -37,4 +37,3 @@ console.log(numeros);
 
 // Comparação flexival
 let x: number = 5;
-if
