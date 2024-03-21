@@ -1,7 +1,3 @@
-
-// Nesse rascunho esta faltando a parte de dirigir o carro
-
-
 class Car{
 
     pass: number; // Passageiros
@@ -77,14 +73,9 @@ class Car{
             return;
 
         }
-        
-            
+         
         this.gas -= km;
-        this.km += km;
-
-    
-
-        
+        this.km += km;        
 
     }
     
@@ -93,10 +84,8 @@ class Car{
     return `pass: ${this.pass}, gas: ${this.gas}, km: ${this.km}`;
 
     }
-
     
 };
-
 
 let _cin_ : string[] = [];
 try { _cin_ = require("fs").readFileSync(0).toString().split(/\r?\n/); } catch(e){}
