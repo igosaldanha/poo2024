@@ -8,7 +8,6 @@ class Calculator {
         this.batteryMax = batteryMax;
         this.battery = 0;
         this.display = 0;
-
     }
 
     chargeBattery(value: number): void {
@@ -19,7 +18,6 @@ class Calculator {
             this.battery = this.batteryMax;
             return;
         }
-
     }
 
     useBattery(): boolean {
@@ -31,16 +29,13 @@ class Calculator {
 
         this.battery -= 1;
         return true;
-
     }
-
 
     sum(a: number, b: number): void { 
         
         if(this.useBattery() == true){
             this.display = a + b;
-        }
-        
+        }   
     }
 
     division(num: number, den: number): void {
@@ -51,21 +46,13 @@ class Calculator {
                 console.log("fail: divisao por zero");   
                 return;
             }
-    
             this.display = (num/den)
-
         }
-
-        
-       
-
-
     }
     toString(): string {
         return "display = " + this.display.toFixed(2) + ", battery = " + this.battery;
     }
 }
-
 
 let _cin_ : string[] = [];
 try { _cin_ = require("fs").readFileSync(0).toString().split(/\r?\n/); } catch(e){}
