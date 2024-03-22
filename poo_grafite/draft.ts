@@ -21,8 +21,9 @@ class Lead {
             return 6;
         return 0;
     }
+
     public toString(): string {
-        return `calibre: ${}, grafite: ${}`;
+        return `${this.thickness.toFixed(1)}:${this.hardness}:${this.size}`
     }
 
     public getThickness(): number {
@@ -46,22 +47,71 @@ class Lead {
 }
 
 class Pencil {
+
     private thickness: number;
     private tip: Lead | null;
 
     public constructor(thickness: number) { 
+        this.thickness = thickness;
+        this.tip = null;
     }
 
     public hasLead(): boolean {
+        return this.tip !== null;
     }
 
     public insert(lead: Lead): boolean {
+
+        if(this.hasLead()){
+            console.log("fail: ja existe grafite")
+            return false;
+        }
+        if (lead.getThickness() != this.thickness){
+            console.log("fail: calibre incompativel");
+            return false
+        }
+
+        this.tip = lead;
+        return true;
+
     }
 
     public remove(): Lead | null {
+
+        if (!this.hasLead()){
+            console.log("fail: nao existe grafite")
+            return null;
+        }
+        
+        let aux = this.tip;
+        this.tip = null;
+        return aux;
+
     }
 
     writePage(): void {
+
+        if(!this.hasLead()){
+            console.log("fail: nao existe grafite")
+            return;
+        }
+        
+        if(this.tip!.getSize() <= 10){
+            console.log("fail: tamanho insuficiente");
+            return;
+        }
+
+        let final = this.tip!.getSize() - this.tip!.usagePerSheet();
+
+        if(final < 10){
+            this.tip!.setSize(10);
+            console.log(`fail: folha incompleta`);
+        }
+
+        if(this.tip!.getSize() > 10){
+            this.tip?.setSize(this.tip.getSize() - this.tip!.usagePerSheet());
+          }
+          
     }
 
     public toString(): string {
