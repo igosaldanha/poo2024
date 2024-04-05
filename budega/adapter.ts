@@ -1,9 +1,8 @@
-import {Pessoa} from "./pessoa.ts"
-import {Budega} from "./budega.ts"
+import {Pessoa} from "./pessoa"
+import {Budega} from "./budega"
 
 class Adapter {
 
-    pessoa: Pessoa;
     budega: Budega;
 
     constructor() {
@@ -12,8 +11,7 @@ class Adapter {
         this.budega = new Budega(nCaixas);
     }
     arrive(nome: string): void {
-        this.pessoa.setNome(nome);
-        this.budega.chegar(this.pessoa);
+        this.budega.chegar(new Pessoa(nome));
     }
     call(index: number): void {
         this.budega.chamar(index);
