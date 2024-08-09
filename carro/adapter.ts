@@ -30,10 +30,5 @@ class Adapter {
 
 }
 
-
-if (require.main === module) {
-    console.log("Rodando a adapter...");
-}
-
 export {Adapter};
 

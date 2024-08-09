@@ -27,7 +27,3 @@ class Adapter {
 
 export { Adapter };
 
-
-if (require.main === module) {
-    console.log("Testando Adapter");
-}
