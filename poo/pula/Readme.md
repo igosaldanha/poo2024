@@ -1,9 +1,9 @@
-# @pula-pula - Gerenciando entradas e sa√≠das
+# @pula-pula - Gerenciando entradas e saÌdas
 
-- Veja a vers√£o online: [aqui.](https://github.com/qxcodepoo/arcade/blob/master/base/pula-pula/Readme.md)
-- Para programar na sua m√°quina (local/virtual) use:
+- Veja a vers„o online: [aqui.](https://github.com/qxcodepoo/arcade/blob/master/base/pula-pula/Readme.md)
+- Para programar na sua m·quina (local/virtual) use:
   - `tko down poo pula-pula`
-- Se n√£o tem o `tko`, instale pelo [LINK](https://github.com/senapk/tko#tko).
+- Se n„o tem o `tko`, instale pelo [LINK](https://github.com/senapk/tko#tko).
 
 ---
 
@@ -14,13 +14,13 @@
 
 ![cover](https://raw.githubusercontent.com/qxcodepoo/arcade/master/base/pula-pula/cover.jpg)
 
-Nosso objetivo no trabalho √© modelar um gestor de pula pulas em um parquinho, controlando as pessoas que entram e saem do pula pula, al√©m de coordenar as pessoas que est√£o na fila de espera.
+Nosso objetivo no trabalho È modelar um gestor de pula pulas em um parquinho, controlando as pessoas que entram e saem do pula pula, alÈm de coordenar as pessoas que est„o na fila de espera.
 
 ## Intro
 
-- Inserir crian√ßas na fila de espera do pula pula
-- Mover a primeira crian√ßa da fila de espera do pula pula para dentro do pula pula.
-- Mover a primeira crian√ßa que entrou no pula pula para o final da fila de espera.
+- Inserir crianÁas na fila de espera do pula pula
+- Mover a primeira crianÁa da fila de espera do pula pula para dentro do pula pula.
+- Mover a primeira crianÁa que entrou no pula pula para o final da fila de espera.
 
 ***
 
@@ -68,28 +68,28 @@ class Trampoline {
   - waiting : List<Kid>
   __
   
-  ' procura por uma crian√ßa na lista do par√¢metro e se
-  ' encontrar, remove a crian√ßa e a retorna
+  ' procura por uma crianÁa na lista do par‚metro e se
+  ' encontrar, remove a crianÁa e a retorna
   - {static} removeFromList(name : string, list : List<Kid>) : Kid | null
   __
   + Trampoline()
   + toString() : string
   __
   
-  ' insere na posi√ß√£o mais a esquerda da lista de espera
+  ' insere na posiÁ„o mais a esquerda da lista de espera
   + arrive(kid : Kid)
   
-  ' se existir algu√©m na lista de espera
-  ' remove o que estiver mais a direita e insere na posi√ß√£o mais 
+  ' se existir alguÈm na lista de espera
+  ' remove o que estiver mais a direita e insere na posiÁ„o mais 
   ' a esquerda da lista de playing
   + enter()
   
-  ' se existir algu√©m em playing, remove o que estiver mais a direita
-  ' e insere na posi√ß√£o mais a esquerda da lista de espera
+  ' se existir alguÈm em playing, remove o que estiver mais a direita
+  ' e insere na posiÁ„o mais a esquerda da lista de espera
   + leave()
   
-  ' utilize o m√©todo est√°tico removeFromList
-  ' para tentar remover a crian√ßa das duas filas
+  ' utilize o mÈtodo est·tico removeFromList
+  ' para tentar remover a crianÁa das duas filas
   + removeKid(name : string) : Kid | null
 }
 
@@ -104,7 +104,7 @@ class Trampoline {
 ```bash
 #__case unico
 # $chegou _nome _idade
-# insere uma crian√ßa na fila de entrada do brinquedo
+# insere uma crianÁa na fila de entrada do brinquedo
 $arrive mario 5
 $arrive livia 4
 $arrive luana 3
@@ -116,7 +116,7 @@ $show
 
 #__case entrando
 # entrar
-# tira a primeira crian√ßa da fila de entrada e insere no pula pula
+# tira a primeira crianÁa da fila de entrada e insere no pula pula
 
 $enter
 $show

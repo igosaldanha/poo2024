@@ -1,8 +1,22 @@
 {
     "expanded": [
-        "configuracao-"
+        "introducao-",
+        "entendendo-classes-a-main-e-os-testes",
+        "listas-",
+        "arraylist-i---listas",
+        "arraylist-ii---arrays-de-null",
+        "operacoes-em-array-",
+        "estressados-b\u00e1sicos"
     ],
-    "tasks": {},
+    "tasks": {
+        "carro": "10",
+        "calculadora": "10",
+        "relogio": "10",
+        "grafite": "10",
+        "motoca": "10",
+        "tamagotchi": "10",
+        "budega": "10"
+    },
     "flags": {
         "minimum": 0,
         "reward": 0,
@@ -17,15 +31,22 @@
         "nerd": 1
     },
     "new_items": [
-        "entendendo-classes-a-main-e-os-testes",
-        "modificadores-de-acesso",
-        "agrega\u00e7\u00e3o-simples",
-        "arraylist-ii---arrays-de-null",
         "arraylist-iii---composi\u00e7\u00e3o-e-enum",
         "mapas--exce\u00e7\u00f5es",
         "mapas--exce\u00e7\u00f5es-ii",
         "heran\u00e7a-i",
-        "refer\u00eancias-cruzadas"
+        "refer\u00eancias-cruzadas",
+        "polimorfismo-",
+        "relacionamentos-nxn-",
+        "futuro-",
+        "estressados-avan\u00e7ado",
+        "em-atualiza\u00e7\u00e3o",
+        "rascunhos",
+        "conte\u00fado-extra",
+        "configuracao-",
+        "melhorando-o-codigo-",
+        "modificadores-de-acesso",
+        "agrega\u00e7\u00e3o-simples"
     ],
     "lang": "ts"
 }

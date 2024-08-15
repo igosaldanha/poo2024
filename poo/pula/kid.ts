@@ -7,15 +7,15 @@ class Kid {
         this.name = name;
     }
 
-    getAge(): number {
+    public getAge(): number {
         return this.age;
     }
 
-    getName(): string {
+    public getName(): string {
         return this.name;
     }
 
-    toString(): string {
+    public toString(): string {
         return this.name + ":" + this.age.toString();
     }
 }
