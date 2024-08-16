@@ -1,13 +1,17 @@
+
 class Lead {
     private thickness: number;
     private hardness: string;
     private size: number;
 
-    public constructor(thickness: number, hardness: string, size: number) {
+    public constructor(calibre: number, dureza:string, tamanho: number) {
+        this.thickness = calibre;
+        this.hardness = dureza;
+        this.size = tamanho;
+    }
 
-        this.thickness = thickness;
-        this.hardness = hardness;
-        this.size = size;
+    public toString(): string {
+        return `${this.thickness}:${this.hardness}:${this.size}`;
     }
 
     public usagePerSheet(): number {
@@ -17,108 +21,98 @@ class Lead {
             return 2;
         if (this.hardness === '4B')
             return 4;
-        if (this.hardness === '6B')
-            return 6;
-        return 0;
-    }
-
-    public toString(): string {
-        return `${this.thickness.toFixed(1)}:${this.hardness}:${this.size}`
+        return 6;
     }
 
     public getThickness(): number {
         return this.thickness;
     }
-    public getSize(): number {
-        return this.size;
-    }
+
     public getHardness(): string {
         return this.hardness;
     }
-    public setSize(value: number): void {
-        this.size = value;
+
+    public getSize(): number {
+        return this.size;
     }
-    public setHardness(value: string): void {
-        this.hardness = value;
-    }
-    public setThickness(value: number): void {
-        this.thickness = value;
+
+    public setSize(size: number): void {
+        this.size = size;
     }
 }
 
 class Pencil {
-
     private thickness: number;
-    private tip: Lead | null;
+    private tip: Lead | null; //lead da ponta
+    private barrel: Array<Lead> = new Array<Lead>(); //grafites no cano
 
-    public constructor(thickness: number) { 
+    public constructor(thickness: number) {
         this.thickness = thickness;
-        this.tip = null;
-    }
-
-    public hasLead(): boolean {
-        return this.tip !== null;
     }
 
     public insert(lead: Lead): boolean {
-
-        if(this.hasLead()){
-            console.log("fail: ja existe grafite")
+        if (lead.thickness !== this.thickness) {
+            console.log("fail: calibre incompatível");
             return false;
         }
-        if (lead.getThickness() != this.thickness){
-            console.log("fail: calibre incompativel");
-            return false
-        }
-
-        this.tip = lead;
+        this.barrel.push(lead);
         return true;
-
     }
 
     public remove(): Lead | null {
-
-        if (!this.hasLead()){
-            console.log("fail: nao existe grafite")
-            return null;
+        if (this.tip) {
+            let removed = this.tip;
+            this.tip = null;
+            return removed;
         }
-        
-        let aux = this.tip;
-        this.tip = null;
-        return aux;
-
+        return null;
     }
 
-    writePage(): void {
+    public pull(): boolean {
+                
+        if(this.tip){
+            console.log("fail: ja existe grafite no bico");
+            return false;
+        }
+        if (!this.tip) {
+            if (this.barrel.length === 0) {
+                return false;
+            }
+            this.tip = this.barrel.shift();
+        }
 
-        if(!this.hasLead()){
-            console.log("fail: nao existe grafite")
+        return true;
+    }
+
+    public writePage(): void {
+        if (!this.tip) {
+            console.log("fail: nao existe grafite no bico");
             return;
         }
         
-        if(this.tip!.getSize() <= 10){
+        if(this.tip.getSize() === 10){
             console.log("fail: tamanho insuficiente");
             return;
         }
-
-        let final = this.tip!.getSize() - this.tip!.usagePerSheet();
-
-        if(final < 10){
-            this.tip!.setSize(10);
-            console.log(`fail: folha incompleta`);
+        
+        if (this.tip.getSize() - this.tip.usagePerSheet() < 10) {
+            console.log("fail: folha incompleta");
+            this.tip.setSize(10);
+            return;
         }
 
-        if(this.tip!.getSize() > 10){
-            this.tip?.setSize(this.tip.getSize() - this.tip!.usagePerSheet());
-          }
-          
+        this.tip.setSize(this.tip.getSize() - this.tip.usagePerSheet() );
     }
-
     public toString(): string {
-        let ponta = this.tip != null ? "[" + this.tip.toString() + "]" : "null";
-        return "calibre: " + this.thickness + ", grafite: " + ponta;
-    }
+        let saida =  "calibre: " + this.thickness + ", bico: " +
+                (this.tip != null ? "[" + this.tip + "]" : "[]") + ", tambor: {";
+        for(let g of this.barrel) {
+            saida += "[" + g + "]";
+        }  
+        saida += "}";
 
+        return saida;
+    }
 }
 
 let _cin_ : string[] = [];
@@ -126,23 +120,33 @@ try { _cin_ = require("fs").readFileSync(0).toString().split(/\r?\n/); } catch(e
 let input = () : string => _cin_.length === 0 ? "" : _cin_.shift()!;
 let write = (text: any, end:string="\n")=> process.stdout.write("" + text + end);
 
+
 function main() {
-    let pencil = new Pencil(0);
+    let pencil = new Pencil(0.5);
 
     while (true) {
         let line = input();
-        write("$" + line);
         let args = line.split(" ");
+        write("$" + line);
 
-        if      (args[0] === "init")  { pencil = new Pencil(+args[1]);                                    }
-        else if (args[0] === "show")  { write(pencil.toString());                                         }
-        else if (args[0] === "insert"){ pencil.insert(new Lead(+args[1], args[2], +args[3]));             }
-        else if (args[0] === "remove"){ pencil.remove();                                                  }
-        else if (args[0] === "write") { pencil.writePage();                                               }
-        else if (args[0] === "end")   { break;                                                            }
-        else                          { write("fail: comando invalido");                                  }
+        if (args[0] == "end") {
+            break;
+        } else if (args[0] == "init") {
+            pencil = new Pencil(+args[1]);
+        } else if (args[0] == "insert") {
+            pencil.insert(new Lead(+args[1], args[2], +args[3]));
+        } else if (args[0] == "remove") {
+            pencil.remove();
+        } else if (args[0] == "pull") {
+            pencil.pull();
+        } else if (args[0] == "write") {
+            pencil.writePage();
+        } else if (args[0] == "show") {
+            console.log(pencil.toString());
+        } else {
+            write("fail: comando invalido");
+        }
     }
 }
 
-main();
-
+main()

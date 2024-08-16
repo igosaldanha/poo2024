@@ -1,85 +1,18 @@
 
-
-// existe determinado valor na fila?
 function inside(vet: number[], value: number): boolean {
-
-    for (let element of vet){
-        if(element == value)
-        return true;
-    };
-
-    return false 
     
 }
 
-// qual posição aparece X na fila pela primeira vez?
 function index_of(vet: number[], value: number): number {
-
-    for (let i = 0; i < vet.length; i++) {
-        
-        if(vet[i] == value){
-            return i;
-        }
-        
-    }
-
-    return -1;
-
-
-
 }
 
-// qual a posição do primeiro valor positivo da fila?
 function find_if(vet: number[]): number {
-
-    for (let i = 0; i < vet.length; i++) {
-        
-        if(vet[i] > 0){
-            return i;
-        }
-        
-    }
-
-    return -1;
 }
 
-// qual a posição do menor valor da lista?
 function min_element(vet: number[]): number {
-
-    if (vet.length == 0){
-        return -1;
-    }
-
-    let pos_menor = 0;
-
-    for(let i = 1; i < vet.length; i++){
-
-        if (vet[i] < vet[pos_menor]){
-            pos_menor = i;
-        }
-    }
-
-    return pos_menor;
 }
 
-// qual a posição do menor valor positivo?
 function find_min_if(vet: number[]): number {
-
-    if (vet.length == 0){
-        return -1;
-    }
-
-    let pos_menor_positivo = 0;
-
-    for(let i = 1; i < vet.length; i++){
-
-        if (vet[i] < vet[pos_menor_positivo] && vet[i] > 0){
-            pos_menor_positivo = i;
-        } 
-    }
-
-    return pos_menor_positivo;
-
 }
 
 
@@ -127,13 +60,3 @@ function main() {
 }
 
 main();
-
-
-
-// Função auxiliar para converter de string para vetor
-// "[1,2,3,4]" para [1, 2, 3, 4]
-function to_vet(token: string): number[] {
-    let size = token.length;
-    let inside = token.substring(1, size - 1);
-    return inside === "" ? [] : inside.split(",").map(x => +x)
-}

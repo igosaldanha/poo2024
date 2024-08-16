@@ -1,56 +1,46 @@
-import { Kid } from "./Kid";
+import { Kid } from "./kid";
 
 class Trampoline {
     private waiting: Kid[] = [];
     private playing: Kid[] = [];
 
-    
-    constructor() {
-        
-    }
+    private removeFromList(name: string, list: Kid[]): Kid | null {
+        let index = list.findIndex((kid) => kid.getName() === name);
+        if (index === -1) {
+            return null;
+        }
 
-    private static removeFromList(name: string, list: Kid[]): Kid | null {
-        const index = list.findIndex(kid => kid.getName() === name);
-        if (index !== -1) {
-            return list.splice(index, 1)[0];
-        }
-        return null;
-    }
-
-    public enter(): void {
-        if (this.waiting.length > 0) {
-            const kid = this.waiting.pop();
-            if (kid) {
-                this.playing.unshift(kid);
-                console.log(`$enter`);
-            }
-        }
-    }
-
-    public leave(): void {
-        if (this.playing.length > 0) {
-            const kid = this.playing.pop();
-            if (kid) {
-                this.waiting.unshift(kid);
-                console.log(`$leave`);
-            }
-        }
-    }
-
-    public removeKid(name: string): Kid | null {
-        let kid = Trampoline.removeFromList(name, this.playing);
-        if (kid === null) {
-            kid = Trampoline.removeFromList(name, this.waiting);
-        }
-        if (kid) {
-            console.log(`$remove ${name}`);
-        }
+        let kid = list.splice(index, 1)[0];
         return kid;
     }
 
-    public toString(): string {
-        return "[" + this.waiting.map(kid => kid.toString()).join(", ") + "]" + " => " + 
-                "[" + this.playing.map(kid => kid.toString()).join(", ") + "]";
+    arrive(kid: Kid): void {
+        this.waiting.unshift(kid);
+    }
+
+    enter(): void {
+        if(this.waiting.length > 0) {
+            let aux1 = this.waiting.pop()
+            this.playing.unshift(aux1);
+        }
+    }
+
+    leave(): void {
+        if(this.playing.length > 0){
+            let aux2 = this.playing.pop()
+            this.waiting.unshift(aux2);
+        }
+    }
+
+    removeKid(name: string): Kid | null {
+         if(this.waiting.length < 0) {
+            return null
+        }
+        let kid = this.removeFromList(name, this.waiting) || this.removeFromList(name, this.playing);
+        return kid;
+    }
+
+    toString(): string {return "[" + this.waiting.join(", ") + "]" + " =>" + " [" + this.playing.join(", ") + "]";
     }
 }
 

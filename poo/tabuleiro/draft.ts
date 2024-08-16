@@ -5,29 +5,35 @@ class Player {
     private free: boolean;
 
     constructor(label: number) {
+        this.label = label;
+        this.pos = 0;
+        this.free = true;
     }
 
     public getLabel(): number {
+        return this.label;
     }
 
     public getPos(): number {
+        return this.pos;
     }
 
     public setPos(pos: number) {
+        this.pos = pos;
     }
 
     public setFree(free: boolean): void {
+        this.free = free;
     }
 
     public isFree(): boolean {
+        return this.free;
     }
-
 
     toString(): string {
-        return "Player " + this.label + " at " + this.pos + " is " + (this.free ? "free" : "free");
+        return "Player " + this.label + " at " + this.pos + " is " + (this.free ? "free" : "trapped");
     }
 }
-
 
 class Board {
     trapList: number[]; // posição das armadilhas
@@ -46,9 +52,39 @@ class Board {
     }
 
     addTrap(pos: number) {
+        this.trapList.push(pos);
     }
 
     rollDice(value: number) {
+        if (!this.running) {
+            console.log("game is over");
+            return;
+        }
+
+        const currentPlayer = this.players[0];
+        if (currentPlayer.isFree()) {
+            if (currentPlayer.getPos() + value >= this.size) {
+                this.running = false;
+                currentPlayer.setPos(this.size - 1);
+                console.log(`player${currentPlayer.getLabel()} ganhou`);
+            } else {
+                currentPlayer.setPos(currentPlayer.getPos() + value);
+                console.log(`player${currentPlayer.getLabel()} andou para ${currentPlayer.getPos()}`);
+            }
+            if (this.trapList.includes(currentPlayer.getPos())) {
+                currentPlayer.setFree(false);
+                console.log(`player${currentPlayer.getLabel()} caiu em uma armadilha`);
+            }
+        } else {
+            if (value % 2 === 0) {
+                currentPlayer.setFree(true);
+                console.log(`player${currentPlayer.getLabel()} se libertou`);
+            } else {
+                console.log(`player${currentPlayer.getLabel()} continua preso`);
+            }
+        }
+
+        this.players.push(this.players.shift());
     }
     
     toString() {
@@ -66,6 +102,7 @@ class Board {
         return str;
     }
 };
+
 
 
 // ------------ Funções Auxiliares --------------------

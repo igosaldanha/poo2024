@@ -1,52 +1,53 @@
 {
     "expanded": [
-        "introducao-",
-        "entendendo-classes-a-main-e-os-testes",
         "listas-",
         "arraylist-i---listas",
-        "arraylist-ii---arrays-de-null",
-        "operacoes-em-array-",
-        "estressados-b\u00e1sicos"
+        "arraylist-ii---arrays-de-null"
     ],
     "tasks": {
-        "carro": "10",
-        "calculadora": "10",
-        "relogio": "10",
-        "grafite": "10",
-        "motoca": "10",
-        "tamagotchi": "10",
-        "budega": "10"
+        "carro": "10:0:0",
+        "calculadora": "10:0:0",
+        "relogio": "10:0:0",
+        "grafite": "10:0:0",
+        "motoca": "10:0:0",
+        "tamagotchi": "10:0:0",
+        "budega": "10:0:100",
+        "pula": "10:0:100",
+        "lapiseira": "10:0:0",
+        "tabuleiro": "10:0:100"
     },
     "flags": {
-        "minimum": 0,
-        "reward": 0,
-        "percent": 0,
+        "minimum": 1,
+        "reward": 1,
+        "percent": 1,
         "admin": 0,
         "fortune": 0,
         "random": 0,
         "config": 1,
-        "xpbar": 1,
-        "inventory": 1,
-        "mono": 0,
-        "nerd": 1
+        "inventory": 1
     },
     "new_items": [
+        "configuracao-",
+        "operacoes-em-array-",
+        "introducao-",
+        "melhorando-o-codigo-",
+        "polimorfismo-",
+        "relacionamentos-nxn-",
+        "futuro-",
+        "conte\u00fado-extra",
+        "estressados-b\u00e1sicos",
+        "estressados-avan\u00e7ado",
+        "entendendo-classes-a-main-e-os-testes",
+        "modificadores-de-acesso",
+        "agrega\u00e7\u00e3o-simples",
         "arraylist-iii---composi\u00e7\u00e3o-e-enum",
         "mapas--exce\u00e7\u00f5es",
         "mapas--exce\u00e7\u00f5es-ii",
         "heran\u00e7a-i",
         "refer\u00eancias-cruzadas",
-        "polimorfismo-",
-        "relacionamentos-nxn-",
-        "futuro-",
-        "estressados-avan\u00e7ado",
         "em-atualiza\u00e7\u00e3o",
-        "rascunhos",
-        "conte\u00fado-extra",
-        "configuracao-",
-        "melhorando-o-codigo-",
-        "modificadores-de-acesso",
-        "agrega\u00e7\u00e3o-simples"
+        "rascunhos"
     ],
-    "lang": "ts"
+    "lang": "ts",
+    "index": 3
 }
