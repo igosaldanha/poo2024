@@ -19,16 +19,16 @@ class Trampoline {
     }
 
     enter(): void {
-        if(this.waiting.length > 0) {
-            let aux1 = this.waiting.pop()
-            this.playing.unshift(aux1);
-        }
+        if(this.waiting.length > 0){
+            let aux = this.waiting.pop()
+            this.playing.unshift(aux!);
+        } 
     }
 
     leave(): void {
         if(this.playing.length > 0){
             let aux2 = this.playing.pop()
-            this.waiting.unshift(aux2);
+            this.waiting.unshift(aux2!);
         }
     }
 

@@ -1,9 +1,9 @@
-# @lapiseira - Gerenciando os m˙ltiplos grafites
+# @lapiseira - Gerenciando os m√∫ltiplos grafites
 
-- Veja a vers„o online: [aqui.](https://github.com/qxcodepoo/arcade/blob/master/base/lapiseira/Readme.md)
-- Para programar na sua m·quina (local/virtual) use:
+- Veja a vers√£o online: [aqui.](https://github.com/qxcodepoo/arcade/blob/master/base/lapiseira/Readme.md)
+- Para programar na sua m√°quina (local/virtual) use:
   - `tko down poo lapiseira`
-- Se n„o tem o `tko`, instale pelo [LINK](https://github.com/senapk/tko#tko).
+- Se n√£o tem o `tko`, instale pelo [LINK](https://github.com/senapk/tko#tko).
 
 ---
 
@@ -14,36 +14,36 @@
 
 ![cover](https://raw.githubusercontent.com/qxcodepoo/arcade/master/base/lapiseira/cover.jpg)
 
-FaÁa o modelo de uma lapiseira que pode conter v·rios.
+Fa√ßa o modelo de uma lapiseira que pode conter v√°rios.
 
 ## Intro
 
 - Iniciar lapiseira
   - Inicia uma lapiseira de determinado calibre sem grafite.
   - Lapiseiras possuem um bico e um tambor.
-  - O bico guarda o grafite que est· em uso.
+  - O bico guarda o grafite que est√° em uso.
   - O tambor guarda os grafites reservas.
 - Inserir grafite
   - Insere um grafite passando
     - o calibre: float.
     - a dureza: string.
     - o tamanho em mm: int.
-  - N„o deve aceitar um grafite de calibre n„o compatÌvel.
-  - O grafite È colocado como o ⁄LTIMO grafite do tambor.
+  - N√£o deve aceitar um grafite de calibre n√£o compat√≠vel.
+  - O grafite √© colocado como o √öLTIMO grafite do tambor.
 - Puxar grafite
   - Puxa o grafite do tambor para o bico.
-  - Se j· tiver um grafite no bico, esse precisa ser removido primeiro.
+  - Se j√° tiver um grafite no bico, esse precisa ser removido primeiro.
 - Remover grafite
   - Retira o grafite do bico.
 - Escrever folha
-  - N„o È possÌvel escrever se n„o h· grafite no bico.
+  - N√£o √© poss√≠vel escrever se n√£o h√° grafite no bico.
   - Quanto mais macio o grafite, mais rapidamente ele se acaba. Para simplificar, use a seguinte regra:
     - Grafite HB: 1mm por folha.
     - Grafite 2B: 2mm por folha.
     - Grafite 4B: 4mm por folha.
     - Grafite 6B: 6mm por folha.
-  - O ˙ltimo centÌmetro de um grafite n„o pode ser aproveitado, quando o grafite estiver com 10mm, n„o È mais possÌvel escrever e o grafite deve ser retirado.
-  - Se n„o houver grafite suficiente para terminar a folha, avise que o texto ficou incompleto.
+  - O √∫ltimo cent√≠metro de um grafite n√£o pode ser aproveitado, quando o grafite estiver com 10mm, n√£o √© mais poss√≠vel escrever e o grafite deve ser retirado.
+  - Se n√£o houver grafite suficiente para terminar a folha, avise que o texto ficou incompleto.
 
 ***
 
@@ -69,7 +69,7 @@ class Lead {
     ' dureza do grafite HB, 2B, 4B, 6B
     - hardness  : string
 
-    ' tamanho do grafite em milÌmetros
+    ' tamanho do grafite em mil√≠metros
     - size      : int
     __
   
@@ -77,7 +77,7 @@ class Lead {
     + Lead(thickness : float, hardness : string, size : int)
     
     ' gastoPorFolha
-    ' retorna o gasto em milÌmetros para uma p·gina escrita
+    ' retorna o gasto em mil√≠metros para uma p√°gina escrita
     ' 1mm para HB
     ' 2mm para 2B
     ' 4mm para 4B
@@ -85,7 +85,7 @@ class Lead {
     + usagePerSheet() : int
     __
     
-    ' apenas os mÈtodos get
+    ' apenas os m√©todos get
     + getHardness()  : string
     + getSize()      : int
     + getThickness() : float
@@ -102,8 +102,8 @@ class Pencil {
     ' calibre da lapiseira
     - thickness : float
 
-    ' guarda o grafite que est· na ponta da lapiseira
-    ' um valor nulo indica que a lapiseira est· sem grafite
+    ' guarda o grafite que est√° na ponta da lapiseira
+    ' um valor nulo indica que a lapiseira est√° sem grafite
     - tip       : Lead | null
 
     ' tambor da lapiseira, guarda os grafites
@@ -117,13 +117,13 @@ class Pencil {
     __
 
     ' insere um grafite no final do tambor
-    ' verifica se o grafite tem calibre compatÌvel
+    ' verifica se o grafite tem calibre compat√≠vel
     + insert(lead : Lead) : boolean
 
     ' remove o grafite da ponta
     ' verifica se existe grafite na ponta
     ' retorna o grafite removido
-    ' ou null se n„o tinha grafite
+    ' ou null se n√£o tinha grafite
     ' remover significa colocar o atributo tip para null
     + remove()            : Lead | null
 
@@ -135,7 +135,7 @@ class Pencil {
     ' escreve na folha gastando o grafite
     ' verifica se existe grafite na ponta
     ' tenta diminuir o tamanho do grafite 
-    '   utilizando os mÈtodos getSize() e setSize()
+    '   utilizando os m√©todos getSize() e setSize()
     '   escrever uma folha gasta tip.usagePerSheet() mm
     ' verifica se existe tamanho para escrever a folha inteira
     + writePage()
@@ -157,7 +157,7 @@ $show
 calibre: 0.5, bico: [], tambor: {}
 #__case calibre errado
 $insert 0.7 2B 50
-fail: calibre incompatÌvel
+fail: calibre incompat√≠vel
 #__case calibre certo
 $insert 0.5 2B 50
 $show

@@ -84,7 +84,17 @@ class Board {
             }
         }
 
+
+
+
+
+
+
+
+
+        
         this.players.push(this.players.shift()!);
+        
     }
     
     toString() {
@@ -102,8 +112,6 @@ class Board {
         return str;
     }
 };
-
-
 
 
 
