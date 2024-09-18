@@ -77,7 +77,7 @@ class Maquina {
 
     toString(): string {
         const espiralStr = this.espirais.map((slot, index) => `${index} ${slot.toString()}`).join('\n');
-        return `saldo: ${this.saldo.toFixed(2)}\n${espiralStr}`;
+        return `saldo: ${this.getSaldo().toFixed(2)}\n${espiralStr}`;
     }
 }
 

@@ -7,7 +7,19 @@
         "listas-",
         "arraylist-i---listas",
         "arraylist-ii---arrays-de-null",
-        "arraylist-iii---composi\u00e7\u00e3o-e-enum"
+        "arraylist-iii---composi\u00e7\u00e3o-e-enum",
+        "melhorando-o-codigo-",
+        "polimorfismo-",
+        "heran\u00e7a-i",
+        "mapas--exce\u00e7\u00f5es",
+        "mapas--exce\u00e7\u00f5es-ii",
+        "relacionamentos-nxn-",
+        "futuro-",
+        "operacoes-em-array-",
+        "configuracao-",
+        "estressados-b\u00e1sicos",
+        "estressados-avan\u00e7ado",
+        "conte\u00fado-extra"
     ],
     "tasks": {
         "animal": "10:0:100",
@@ -36,20 +48,10 @@
         "inventory": 1
     },
     "new_items": [
-        "operacoes-em-array-",
-        "futuro-",
-        "estressados-b\u00e1sicos",
-        "estressados-avan\u00e7ado",
-        "mapas--exce\u00e7\u00f5es-ii",
         "em-atualiza\u00e7\u00e3o",
         "rascunhos",
-        "configuracao-",
-        "conte\u00fado-extra",
-        "relacionamentos-nxn-",
-        "refer\u00eancias-cruzadas",
-        "polimorfismo-",
-        "heran\u00e7a-i"
+        "refer\u00eancias-cruzadas"
     ],
     "lang": "ts",
-    "index": 14
+    "index": 32
 }
