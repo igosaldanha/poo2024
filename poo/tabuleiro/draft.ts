@@ -83,8 +83,9 @@ class Board {
                 console.log(`player${currentPlayer.getLabel()} continua preso`);
             }
         }
-
+        
         this.players.push(this.players.shift()!);
+        
     }
     
     toString() {
@@ -102,8 +103,6 @@ class Board {
         return str;
     }
 };
-
-
 
 
 

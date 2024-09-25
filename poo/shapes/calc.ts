@@ -1,5 +1,4 @@
 import { Point2D } from "./point2d";
-import { Shape } from "./shape";
 
 class Calc {
     static distance(a: Point2D, b: Point2D): number {

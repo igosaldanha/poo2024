@@ -7,7 +7,6 @@
         "listas-",
         "arraylist-i---listas",
         "arraylist-ii---arrays-de-null",
-        "arraylist-iii---composi\u00e7\u00e3o-e-enum",
         "melhorando-o-codigo-",
         "polimorfismo-",
         "heran\u00e7a-i",
@@ -19,7 +18,8 @@
         "configuracao-",
         "estressados-b\u00e1sicos",
         "estressados-avan\u00e7ado",
-        "conte\u00fado-extra"
+        "conte\u00fado-extra",
+        "arraylist-iii---composi\u00e7\u00e3o-e-enum"
     ],
     "tasks": {
         "animal": "10:0:100",
@@ -35,7 +35,8 @@
         "tabuleiro": "10:0:100",
         "cinema": "10:0:100",
         "topic": "0:0:100",
-        "junkfood": "0:0:100"
+        "junkfood": "0:0:100",
+        "estacionamento": "0:0:100"
     },
     "flags": {
         "minimum": 1,
@@ -53,5 +54,5 @@
         "refer\u00eancias-cruzadas"
     ],
     "lang": "ts",
-    "index": 32
+    "index": 48
 }
